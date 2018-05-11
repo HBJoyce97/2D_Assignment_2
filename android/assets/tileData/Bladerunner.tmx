@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="100" height="16" tilewidth="32" tileheight="32" infinite="0" nextobjectid="124">
+ <tileset firstgid="1" source="Foreground.tsx"/>
+ <tileset firstgid="17" source="Background.tsx"/>
+ <tileset firstgid="18" source="Obstacles.tsx"/>
+ <layer name="Background" width="100" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztV+0KhSAMnUT0RyTf/2VvgsLqpo42ZNYOjPCj1B3PtiIARAHbG+aF1pjFOJDaQ/J7gDMPpW180CHJh+nD+NBoHEjyESpP44MOST5MH/r4uOPH+KAj+codthy2ZVty35rbDvo+LfEpwn+dZXzQ4aEda574dKZ4lfaW7h2+k6176C/jK3p/y+McSPMxW/7onf+Oj958Dsr3a7XR22uk3vlrfLTmcyCpj73Sr5lLrfqQzB8zmVZ9jIhXpZZL+Q/nTpxLcW3nUB+eJ3k3vqwP6lojtapVHyP5CHD+R7m2e3PerI8fc59VmQ==
+  </data>
+ </layer>
+ <layer name="Obstacles" width="100" height="16">
+  <data encoding="base64" compression="zlib">
+   eJztlt0KwjAMhfcKKujF0Gt/rvRG30HfQd//KcyggRAayVy7bt354LDSrizsJE2bZjgrh8A4eLyAJ+MBL6YDaqMMd9IjMt/Hj1p9WZM24pn7Ox1P0st4r0Y/rPzzrqegVU/Jm/Qx9tXiw5F0CmOdf3Ittt6xJx2yRWfDsekY5+yJzsFf+afXee+VdEsa1TDm5kfu874kXCtT9UPWcs0+xJDeeO8e3B9T9UnrTF0afWpjS9qFMfdH6x7n6ZVL//f/0gadSZcwx/3R6qOyV3L/RA0AAEBZvtq4F3I=
+  </data>
+ </layer>
+ <objectgroup name="Collisions">
+  <object id="46" name="Building1" x="-0.666667" y="224" width="351.333" height="288"/>
+  <object id="47" name="Building2" x="864" y="416.667" width="607.333" height="96"/>
+  <object id="50" name="Building3" x="2047.5" y="256" width="287.5" height="255.5"/>
+  <object id="52" name="Building4" x="2432" y="256.5" width="287.5" height="255.5"/>
+  <object id="54" name="Death" x="-2" y="490" width="2722" height="21"/>
+  <object id="57" name="Vent1" x="72" y="200.25" width="15.75" height="23.25"/>
+  <object id="59" name="Vent2" x="135.75" y="200.5" width="16.25" height="23.5"/>
+  <object id="61" name="Vent3" x="903.75" y="392.5" width="16" height="23.75"/>
+  <object id="62" name="Vent4" x="935.5" y="392.5" width="17" height="24"/>
+  <object id="64" name="Vent5" x="1415.75" y="392.5" width="16" height="24"/>
+  <object id="66" name="Vent6" x="2087.5" y="232.5" width="16.5" height="23.25"/>
+  <object id="67" name="Vent7" x="2567.75" y="232.75" width="16" height="23.75"/>
+  <object id="69" name="Fan1" x="1325.67" y="380.333" width="36.3333" height="36"/>
+  <object id="71" name="Fan2" x="2637.67" y="220.333" width="36.3333" height="35.3333"/>
+  <object id="72" name="WaterTower1" x="291.667" y="131.667" width="56.6667" height="92"/>
+  <object id="75" name="WaterTower2" x="1059" y="324.333" width="58" height="92.6667"/>
+  <object id="77" name="WaterTower3" x="1124" y="324.333" width="55.6667" height="91.3333"/>
+  <object id="78" name="WaterTower4" x="2211.33" y="163.333" width="57" height="92.6667"/>
+  <object id="80" name="Girder1" x="192" y="159.333" width="64.3333" height="12.6667"/>
+  <object id="82" name="Girder2" x="384" y="243.667" width="128.333" height="12"/>
+  <object id="83" name="Girder3" x="544" y="307.333" width="64.6667" height="12.6667"/>
+  <object id="84" name="Girder4" x="640" y="339.333" width="64.3333" height="12.3333"/>
+  <object id="86" name="Girder5" x="735.667" y="319.667" width="128" height="12.3333"/>
+  <object id="87" name="Girder6" x="959.333" y="377.333" width="65" height="12.6667"/>
+  <object id="88" name="Girder7" x="1471.67" y="403.333" width="128.667" height="12.6667"/>
+  <object id="89" name="Girder8" x="1599.67" y="371.667" width="64.6667" height="12.3333"/>
+  <object id="91" name="Girder9" x="1695.67" y="339.667" width="128.333" height="13"/>
+  <object id="93" name="Girder10" x="1824" y="308" width="64" height="12"/>
+  <object id="94" name="Girder11" x="1919.67" y="287.667" width="64.3333" height="12.3333"/>
+  <object id="95" name="Girder12" x="1984" y="256" width="63.3333" height="11.3333"/>
+  <object id="97" name="Girder13" x="2112" y="211.333" width="64" height="12.3333"/>
+  <object id="98" name="Girder14" x="2335.33" y="211.667" width="64.6667" height="12.3333"/>
+  <object id="101" name="Girder15" x="2559.67" y="127.667" width="128.333" height="12.3333"/>
+  <object id="102" name="WaterTower5" x="2467.67" y="163.333" width="56.6667" height="92.6667"/>
+  <object id="121" name="Ceiling" x="-3.0303" y="0" width="2721.21" height="9.09091"/>
+  <object id="122" name="Right_Wall" x="2713" y="-1" width="8" height="513"/>
+  <object id="123" name="Left_Wall" x="-1" y="0" width="7" height="511"/>
+ </objectgroup>
+</map>

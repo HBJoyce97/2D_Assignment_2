@@ -1,0 +1,90 @@
+
+character_buff_assets.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+buff
+  rotate: false
+  xy: 2, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 0
+buff
+  rotate: false
+  xy: 2, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 1
+buff
+  rotate: false
+  xy: 2, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 2
+buff
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 3
+buff
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 10
+buff
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 9
+buff
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 5
+buff
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 4
+buff
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 11
+buff
+  rotate: false
+  xy: 130, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 6
+buff
+  rotate: false
+  xy: 130, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 7
+buff
+  rotate: false
+  xy: 130, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 8

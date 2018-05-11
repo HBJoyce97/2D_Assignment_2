@@ -1,0 +1,90 @@
+
+character_norm_assets.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+norm
+  rotate: false
+  xy: 2, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 0
+norm
+  rotate: false
+  xy: 2, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 1
+norm
+  rotate: false
+  xy: 2, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 2
+norm
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 3
+norm
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 10
+norm
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 9
+norm
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 5
+norm
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 4
+norm
+  rotate: false
+  xy: 66, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 11
+norm
+  rotate: false
+  xy: 130, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 6
+norm
+  rotate: false
+  xy: 130, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 7
+norm
+  rotate: false
+  xy: 130, 2
+  size: 62, 64
+  orig: 62, 64
+  offset: 0, 0
+  index: 8
