@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.utils.Timer;
 
 import static com.allsopg.game.utility.Constants.DENSITY;
 import static com.allsopg.game.utility.Constants.FORCE_X;
@@ -20,6 +21,7 @@ import static com.allsopg.game.utility.Constants.MAX_VELOCITY;
 import static com.allsopg.game.utility.Constants.PLAYER_OFFSET_X;
 import static com.allsopg.game.utility.Constants.PLAYER_OFFSET_Y;
 import static com.allsopg.game.utility.Constants.RESTITUTION;
+import static com.allsopg.game.utility.Constants.START_POSITION;
 
 /**
  * Created by gja10 on 13/02/2017.

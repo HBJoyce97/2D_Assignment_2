@@ -35,7 +35,7 @@ public class AmmoAnimationMulti extends Sprite {
 
     // Sets up the two atlases and their regions used for the animation change. atlas_1 will be set to the 'idle' animation; atlas_2 will be set to the 'anim' animation
     public AmmoAnimationMulti(String atlasString_1, String atlasString_2, Texture t, Vector2 pos, Animation.PlayMode loopType){
-        super(t);
+        super(t, 2, 2);
         atlas_1 = new TextureAtlas(Gdx.files.internal(atlasString_1));
         Array<TextureAtlas.AtlasRegion> regions_1 = new
                 Array<TextureAtlas.AtlasRegion>(atlas_1.getRegions());
@@ -50,7 +50,7 @@ public class AmmoAnimationMulti extends Sprite {
 
         animation = idle; // Animation is set to 'idle' by default, so the crate remains closed at the beginning of the animation
 
-        this.setPosition(300, 300);
+        this.setPosition(pos.x, pos.y);
         initTweenData(); // Initializes the tween
         soundLink = new SoundLink(); // Intializes the SoundLink
     }
@@ -86,35 +86,8 @@ public class AmmoAnimationMulti extends Sprite {
     // The following code is the main animation for the sprite on screen
     public void destroyRoutine(){
         Tween.to(tweenData, TweenDataAccessor.TYPE_POS,0f) // Sets the start position of the sprite (off screen in the center)
-                .target(825,1200).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_POS,100f) // Sets the sprite to move in the -y direction by 1200
-                .target(825, 0).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_ROTATION,100f) // Whilst falling, the sprite will rotate 720 degrees. Synced with the tween above so the rotation and position are relative
-                .target(720).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_POS,40f) // Delays the sprite before moving in the y direction by 50
-                .delay(150f)
-                .target(825, 50).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_ROTATION,80f) // Delays the sprite before rotating anti-clockwise by 20 degrees
-                .delay(200f)
-                .target(740).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_ROTATION,80f) // Delays the sprite before rotating clockwise by 40 degrees
-                .delay(250f)
-                .target(700).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_ROTATION,80f) // Delays the sprite before rotating anti-clockwise by 40 degrees
-                .delay(300f)
-                .target(740).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_ROTATION,80f) // Delays the sprite before rotating clockwise by 40 degrees
-                .delay(350f)
-                .target(700).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_ROTATION,80f) // Delays the sprite before rotating anti-clockwise by 20 degrees. The above tweens were used to simulate a shaking of the sprite
-                .delay(400f)
-                .target(720).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_POS,50f) // Delays the sprite before moving in the -y direction by 50
-                .delay(500f)
-                .target(825, 0).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_POS,50f) // Delays the sprite before the animation is changed
                 .delay(1000f)
-                .target(825, 0)
+                .target(5, 10)
                 .setCallback(new TweenCallback() { // Initializes the callback
                     @Override
                     public void onEvent(int type, BaseTween<?> source) { // The following event causes the animation change

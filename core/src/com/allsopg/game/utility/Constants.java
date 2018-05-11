@@ -21,7 +21,7 @@ public class Constants {
     public static final float FRAME_DURATION = 1.0f / 30.0f;
     public static final float AMMO_FRAME_DURATION = 1.0f / 2.0f;
     public static final float TIME_STEP=1/60f;
-    public static final int LEVEL_TIME = 120;
+    public static final int LEVEL_TIME = 180;
 
     public static final int VELOCITY_ITERATIONS = 6;
     public static final int POSITION_ITERATIONS = 2;
@@ -34,7 +34,7 @@ public class Constants {
     public static final float RESTITUTION=.5f;
     //impulse strength
     public static final float FORCE_X=2f;
-    public static final float FORCE_Y=3f;
+    public static final float FORCE_Y=3.5f;
     //Speed
     public static final float MAX_VELOCITY = 1f;
     public static final float MAX_HEIGHT = 100;

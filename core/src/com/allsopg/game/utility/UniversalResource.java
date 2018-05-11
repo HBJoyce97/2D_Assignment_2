@@ -26,6 +26,6 @@ public class UniversalResource {
         Tween.setCombinedAttributesLimit(4);
         tweenManager = new TweenManager();
         Tween.registerAccessor(TweenData.class,
-                (TweenAccessor<?>) new TweenDataAccessor());
+                new TweenDataAccessor());
     }
 }

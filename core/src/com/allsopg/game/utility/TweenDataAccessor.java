@@ -8,7 +8,7 @@ import aurelienribon.tweenengine.TweenAccessor;
  * Created by Harry on 11/05/2018.
  */
 
-public class TweenDataAccessor {
+public class TweenDataAccessor implements TweenAccessor<TweenData>  {
     public static final int TYPE_POS = 1;
     public static final int TYPE_SCALE = 2;
     public static final int TYPE_COLOUR = 3;
@@ -38,7 +38,7 @@ public class TweenDataAccessor {
         }
     }
 
-
+    @Override
     public void setValues(TweenData target, int tweenType, float[] newValues) {
         switch(tweenType){
             case TYPE_POS:

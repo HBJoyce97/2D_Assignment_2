@@ -72,19 +72,19 @@ public class GameScreen extends ScreenAdapter {
         cameraManager.setTarget(smif);
         gameHUD = new HUD(game.batch,smif,game);
         bp = new AmmoAnimationMulti("gfx/ammo_collision/idle/idle_assets.atlas", "gfx/ammo_collision/animation/anim_assets.atlas", MEDIUM, AMMO_START_POS, Animation.PlayMode.LOOP); // Initializes the animation change. Passes in both animation atlases, the texture to size it, sets the vector position and the animation playmode
-        //bp.destroyRoutine(); // Calls the 'destroyRoutine' in the 'AnimationMulti' class. This is what plays/changes the animation
+        bp.destroyRoutine(); // Calls the 'destroyRoutine' in the 'AnimationMulti' class. This is what plays/changes the animation
     }
 
     @Override
     public void render(float delta) {
         frameDelta += delta;
-       // animationTime +=Gdx.graphics.getDeltaTime();
-        //UniversalResource.getInstance().tweenManager.update(animationTime);
+        animationTime +=Gdx.graphics.getDeltaTime();
+        UniversalResource.getInstance().tweenManager.update(animationTime);
         smif.update(frameDelta);
         gameHUD.update(delta);
         game.batch.setProjectionMatrix(game.camera.combined);
         clearScreen();
-        // bp.update(animationTime); // Updates the animation every frame
+        bp.update(animationTime); // Updates the animation every frame
         draw();
         WorldManager.getInstance().doPhysicsStep(delta);
     }
@@ -95,7 +95,7 @@ public class GameScreen extends ScreenAdapter {
         cameraManager.update();
         game.batch.begin();
         smif.draw(game.batch);
-       // bp.draw(game.batch); // Draws the animation to the screen
+        bp.draw(game.batch); // Draws the animation to the screen
         game.batch.end();
         gameHUD.stage.draw();
         WorldManager.getInstance().debugRender();
