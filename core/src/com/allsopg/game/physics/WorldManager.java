@@ -21,7 +21,7 @@ import static com.allsopg.game.utility.Constants.VELOCITY_ITERATIONS;
 public class WorldManager {
     private final Vector2 gravity;
     private World world;
-    private Box2DDebugRenderer debugRenderer;
+//  private Box2DDebugRenderer debugRenderer;
     private static TBWGame game;
     private MapBodyManager mapBodyManager;
     private static Map map;
@@ -44,7 +44,7 @@ public class WorldManager {
         world = new World(gravity, true);
         mapBodyManager = new MapBodyManager(world, TILE_SIZE, Gdx.files.internal(PHYSICS_MATERIALS_PATH));
         mapBodyManager.createPhysics(map,"Collisions"); // Creates the physics around the obstacles in the tilemap
-        debugRenderer = new Box2DDebugRenderer();
+//      debugRenderer = new Box2DDebugRenderer();
     }
 
     public static void initialise(TBWGame aGame, Map aMap){
@@ -63,10 +63,10 @@ public class WorldManager {
         world.step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
     }
 
-    public void debugRender(){
-        game.batch.begin();
-            debugRenderer.render(world, game.camera.combined);
-        game.batch.end();
-    }
+//    public void debugRender(){
+//        game.batch.begin();
+//            debugRenderer.render(world, game.camera.combined);
+//        game.batch.end();
+//    }
 
 }

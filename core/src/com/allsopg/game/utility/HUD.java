@@ -3,7 +3,9 @@ package com.allsopg.game.utility;
 import com.allsopg.game.TBWGame;
 import com.allsopg.game.bodies.PlayerCharacter;
 import com.allsopg.game.screens.EndScreen;
+import com.allsopg.game.screens.GameScreen;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -73,16 +75,20 @@ public class HUD implements Disposable {
         countdownLabel = new Label(String.format("%03d", worldTimer),
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
         scoreLabel = new Label(String.format("%03d", score),
-                new Label.LabelStyle(new BitmapFont(), Color.BLUE));
-        timeLabel = new Label("COUNTDOWN",
+                new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        timeLabel = new Label("TIME REMAINING",
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
         linkLabel = new Label("POINTS",
-                new Label.LabelStyle(new BitmapFont(), Color.BLUE));
+                new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         //labels added to table using padding and expandX
-        tableData.add(linkLabel).padBottom(5).padLeft(120);
-        tableData.add(scoreLabel).expandX().padBottom(5);
-        tableData.add(timeLabel).padBottom(5).padRight(20);
-        tableData.add(countdownLabel).expandX().padBottom(5);
+        tableData.add(linkLabel).padBottom(5).padLeft(10);
+        tableData.add(scoreLabel).expandX().padBottom(5).padLeft(-700);
+        tableData.add(timeLabel).padBottom(5).padRight(-1300);
+        tableData.add(countdownLabel).expandX().padBottom(5).padRight(-800);
+        linkLabel.setFontScale(2);
+        scoreLabel.setFontScale(2);
+        countdownLabel.setFontScale(2);
+        timeLabel.setFontScale(2);
     }
 
     private void createNavButtons(){
@@ -193,6 +199,5 @@ public class HUD implements Disposable {
     public static Integer getScore() {
         return score;
     }
-
 
 }

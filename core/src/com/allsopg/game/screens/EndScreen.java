@@ -47,14 +47,15 @@ public class EndScreen extends ScreenAdapter {
 
     private void createScoreAndTimer(){
         //define labels using the String, and a Label style consisting of a font and color
-        headerLabel = new Label("LEVEL ONE SCORE", new Label.LabelStyle(new BitmapFont(), Color.LIME));
-        scoreLabel = new Label(String.format("%03d", GameData.getInstance().getScore()), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
-        linkLabel = new Label("POINTS", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+        headerLabel = new Label("GAME OVER", new Label.LabelStyle(new BitmapFont(), Color.RED));
+       // scoreLabel = new Label(String.format("%03d", GameData.getInstance().getScore()), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+       // linkLabel = new Label("POINTS", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
         //add labels to table
-        tableData.add(headerLabel).padLeft(150);
+        tableData.add(headerLabel);
         tableData.row();
-        tableData.add(linkLabel).padLeft(60);
-        tableData.add(scoreLabel).expandX().padRight(160);
+        headerLabel.setFontScale(2);
+       // tableData.add(linkLabel).padLeft(60);
+       // tableData.add(scoreLabel).expandX().padRight(160);
 
     }
 

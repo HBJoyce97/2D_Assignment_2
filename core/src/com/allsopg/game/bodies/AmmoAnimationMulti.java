@@ -85,20 +85,19 @@ public class AmmoAnimationMulti extends Sprite {
 
     // The following code is the main animation for the sprite on screen
     public void destroyRoutine(){
-        Tween.to(tweenData, TweenDataAccessor.TYPE_POS,0f) // Sets the start position of the sprite (off screen in the center)
-                .delay(1000f)
-                .target(5, 10)
-                .setCallback(new TweenCallback() { // Initializes the callback
-                    @Override
-                    public void onEvent(int type, BaseTween<?> source) { // The following event causes the animation change
-                        soundLink.play(1); // Play the first sound in the IntMap (Whoosh)
-                        animation = ammo; // Change the animation from 'idle' to 'ammo'
-                        soundLink.play(2); // Play the second sound in the IntMap (Fire)
-                    }
-                }).start(tweenManager)
-                .to(tweenData, TweenDataAccessor.TYPE_COLOUR,150f) // Delays the colour from changing until the animation has finished. Once finished, the sprite turns black, disappearing from the screen
-                .delay(3600f)
-                .target(1f,1f,1f,.0f).start(tweenManager);
+            Tween.to(tweenData, TweenDataAccessor.TYPE_POS,0f) // Sets the start position of the sprite (off screen in the center)
+                    .target(7, 10)
+                    .setCallback(new TweenCallback() { // Initializes the callback
+                        @Override
+                        public void onEvent(int type, BaseTween<?> source) { // The following event causes the animation change
+                            soundLink.play(1); // Play the first sound in the IntMap (Whoosh)
+                            animation = ammo; // Change the animation from 'idle' to 'ammo'
+                            soundLink.play(2); // Play the second sound in the IntMap (Fire)
+                        }
+                    }).start(tweenManager)
+                    .to(tweenData, TweenDataAccessor.TYPE_COLOUR,150f) // Delays the colour from changing until the animation has finished. Once finished, the sprite turns black, disappearing from the screen
+                    .delay(3600f)
+                    .target(1f,1f,1f,.0f).start(tweenManager);
     }
 
     private TweenData getTweenData(){return tweenData;} // Returns tweenData

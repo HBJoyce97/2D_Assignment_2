@@ -3,6 +3,7 @@ package com.allsopg.game.bodies;
 import com.allsopg.game.physics.WorldManager;
 import com.allsopg.game.utility.CurrentDirection;
 import com.allsopg.game.utility.IWorldObject;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Vector2;
@@ -12,16 +13,21 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Timer;
 
+import static com.allsopg.game.utility.Constants.AMMO_FRAME_DURATION;
+import static com.allsopg.game.utility.Constants.AMMO_START_POS;
 import static com.allsopg.game.utility.Constants.DENSITY;
 import static com.allsopg.game.utility.Constants.FORCE_X;
 import static com.allsopg.game.utility.Constants.FORCE_Y;
 import static com.allsopg.game.utility.Constants.FRICTION;
 import static com.allsopg.game.utility.Constants.MAX_HEIGHT;
 import static com.allsopg.game.utility.Constants.MAX_VELOCITY;
+import static com.allsopg.game.utility.Constants.MEDIUM;
 import static com.allsopg.game.utility.Constants.PLAYER_OFFSET_X;
 import static com.allsopg.game.utility.Constants.PLAYER_OFFSET_Y;
 import static com.allsopg.game.utility.Constants.RESTITUTION;
 import static com.allsopg.game.utility.Constants.START_POSITION;
+import static com.sun.jmx.mbeanserver.Util.cast;
+import com.allsopg.game.screens.GameScreen;
 
 /**
  * Created by gja10 on 13/02/2017.
@@ -29,12 +35,16 @@ import static com.allsopg.game.utility.Constants.START_POSITION;
  */
 
 public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
-    private Body playerBody;
+    public Body playerBody;
     private boolean facingRight =true;
+    public GameScreen gamescreen;
+    private boolean isRunning = true;
+    private static final float SPAWNER_SCAN_TICK = 3f;
 
     public PlayerCharacter(String atlas, Texture t, Vector2 pos) {
         super(atlas, t, pos);
         buildBody();
+        gamescreen.getBP();
     }
 
     @Override
@@ -54,6 +64,7 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
         super.update(stateTime);
         this.setPosition(playerBody.getPosition().x-PLAYER_OFFSET_X,playerBody.getPosition().y-PLAYER_OFFSET_Y);
         if(!facingRight){flip(true,false);}
+        collide();
     }
 
     public void move(CurrentDirection direction){
@@ -98,6 +109,12 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
         fixtureDef.friction = friction;
         fixtureDef.restitution=restitution;
         return fixtureDef;
+    }
+
+    public void collide() {
+            if ((playerBody.getPosition().x-PLAYER_OFFSET_X >= (1.0f * AMMO_START_POS.x))) {
+                gamescreen.getBP().destroyRoutine();
+        }
     }
 
     @Override

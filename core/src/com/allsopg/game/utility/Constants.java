@@ -21,7 +21,7 @@ public class Constants {
     public static final float FRAME_DURATION = 1.0f / 30.0f;
     public static final float AMMO_FRAME_DURATION = 1.0f / 2.0f;
     public static final float TIME_STEP=1/60f;
-    public static final int LEVEL_TIME = 180;
+    public static final int LEVEL_TIME = 120;
 
     public static final int VELOCITY_ITERATIONS = 6;
     public static final int POSITION_ITERATIONS = 2;
@@ -51,7 +51,7 @@ public class Constants {
     //player start position
     public static final Vector2 START_POSITION = new Vector2(1,10);
     //ammo start position
-    public static final Vector2 AMMO_START_POS = new Vector2(5, 10);
+    public static final Vector2 AMMO_START_POS = new Vector2(7, 10);
     //armour start position
     public static final Vector2 ARMOUR_START_POS = new Vector2(10, 10);
     //health start position

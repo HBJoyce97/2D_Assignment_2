@@ -72,7 +72,7 @@ public class GameScreen extends ScreenAdapter {
         cameraManager.setTarget(smif);
         gameHUD = new HUD(game.batch,smif,game);
         bp = new AmmoAnimationMulti("gfx/ammo_collision/idle/idle_assets.atlas", "gfx/ammo_collision/animation/anim_assets.atlas", MEDIUM, AMMO_START_POS, Animation.PlayMode.LOOP); // Initializes the animation change. Passes in both animation atlases, the texture to size it, sets the vector position and the animation playmode
-        bp.destroyRoutine(); // Calls the 'destroyRoutine' in the 'AnimationMulti' class. This is what plays/changes the animation
+        smif.collide();
     }
 
     @Override
@@ -98,7 +98,7 @@ public class GameScreen extends ScreenAdapter {
         bp.draw(game.batch); // Draws the animation to the screen
         game.batch.end();
         gameHUD.stage.draw();
-        WorldManager.getInstance().debugRender();
+//      WorldManager.getInstance().debugRender();
     }
 
     private void clearScreen() {
@@ -114,4 +114,7 @@ public class GameScreen extends ScreenAdapter {
         GameSnd.setLooping(true);
     }
 
+    public AmmoAnimationMulti getBP(){
+        return bp;
+    }
 }
