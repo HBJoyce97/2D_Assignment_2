@@ -4,6 +4,7 @@ import com.allsopg.game.physics.WorldManager;
 import com.allsopg.game.screens.GameScreen;
 import com.allsopg.game.utility.Constants;
 import com.allsopg.game.utility.CurrentDirection;
+import com.allsopg.game.utility.HUD;
 import com.allsopg.game.utility.IWorldObject;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,6 +15,8 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Timer;
+
+import java.util.TimerTask;
 
 import static com.allsopg.game.utility.Constants.AMMO_FRAME_DURATION;
 import static com.allsopg.game.utility.Constants.AMMO_START_POS;
@@ -38,12 +41,13 @@ import static com.sun.jmx.mbeanserver.Util.cast;
  */
 
 public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
-    private static final float SPAWNER_SCAN_TICK = 0.5f;
+    private static float SPAWNER_SCAN_TICK = 0.5f;
     public Body playerBody;
     private boolean facingRight =true;
     private AmmoAnimationMulti ammoref; // Reference to AmmoAnimationMulti for collision detection
     private JacketAnimationMulti jacketref; // Reference to JacketAnimationMulti for collision detection
     private BottleAnimationMulti bottleref; // Reference to BottleAnimationMulti for collision detection
+    private HUD hud;
 
     // Constructor includes parameters from GameScreen
     public PlayerCharacter(String atlas, Texture t, Vector2 pos, AmmoAnimationMulti ammoanim, JacketAnimationMulti jacketanim, BottleAnimationMulti bottleanim) {
@@ -168,7 +172,6 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
     public void bottleCollide() {
         if ((playerBody.getPosition().x-PLAYER_OFFSET_X >= (1.0f * HEALTH_START_POS.x))) {
             bottleref.destroyRoutine();
-
         }
     }
 

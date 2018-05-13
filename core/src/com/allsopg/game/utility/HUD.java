@@ -40,6 +40,7 @@ public class HUD implements Disposable {
     private float timeCount;
     private static Integer score;
     private boolean timeUp;
+    private int health, armour, ammo;
 
     //Scene2D Widgets
     private Label countdownLabel, timeLabel, healthLabel, armourLabel, ammoLabel;
@@ -52,6 +53,9 @@ public class HUD implements Disposable {
         worldTimer = Constants.LEVEL_TIME;
         timeCount = 0;
         score = 0;
+        health = 50; // Variable for health value
+        armour = 0; // Variable for armour value
+        ammo = 0; // Variable for ammo value
         //new camera used to setup the HUD viewport seperate from the main Game Camera
         //define stage using that viewport and games spritebatch
         viewport = new FitViewport(Constants.VIRTUAL_WIDTH,
@@ -75,11 +79,11 @@ public class HUD implements Disposable {
     private void createScoreAndTimer(){
         countdownLabel = new Label(String.format("%03d", worldTimer),
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
-        healthnumLabel = new Label(String.format("%03d", score),
+        healthnumLabel = new Label(String.format("%03d", health),
                 new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        armournumLabel =  new Label(String.format("%03d", 000),
+        armournumLabel =  new Label(String.format("%03d", armour),
                 new Label.LabelStyle(new BitmapFont(), Color.GOLD));
-        ammonumLabel =  new Label(String.format("%03d", 000),
+        ammonumLabel =  new Label(String.format("%03d", ammo),
                 new Label.LabelStyle(new BitmapFont(), Color.ORANGE));
         timeLabel = new Label("TIME REMAINING:",
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
