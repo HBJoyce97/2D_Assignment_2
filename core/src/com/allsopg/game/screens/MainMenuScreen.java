@@ -22,8 +22,8 @@ import static com.allsopg.game.utility.Constants.VIRTUAL_WIDTH;
 
 public class MainMenuScreen extends ScreenAdapter {
         private TBWGame game;
-        private Texture bladerunnertitle;
-        private Texture bladerunnerstart;
+        private Texture bladerunnertitle; // Variable used to display texture on screen
+        private Texture bladerunnerstart; // Variable used to display texture on screen
         Music MenuSnd = Gdx.audio.newMusic(Gdx.files.internal("sfx/Main_Menu.ogg")); // Initialize the following music
 
         public MainMenuScreen(TBWGame aGame) {

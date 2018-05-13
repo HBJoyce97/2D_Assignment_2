@@ -2,6 +2,8 @@ package com.allsopg.game.screens;
 
 import com.allsopg.game.TBWGame;
 import com.allsopg.game.bodies.AmmoAnimationMulti;
+import com.allsopg.game.bodies.BottleAnimationMulti;
+import com.allsopg.game.bodies.JacketAnimationMulti;
 import com.allsopg.game.bodies.PlayerCharacter;
 import com.allsopg.game.physics.WorldManager;
 import com.allsopg.game.sound.SoundLink;
@@ -21,6 +23,8 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 import static com.allsopg.game.utility.Constants.AMMO_START_POS;
+import static com.allsopg.game.utility.Constants.ARMOUR_START_POS;
+import static com.allsopg.game.utility.Constants.HEALTH_START_POS;
 import static com.allsopg.game.utility.Constants.MEDIUM;
 import static com.allsopg.game.utility.Constants.PLAYER_ATLAS_PATH;
 import static com.allsopg.game.utility.Constants.SMALL;
@@ -43,7 +47,9 @@ public class GameScreen extends ScreenAdapter {
     private HUD gameHUD;
     private CameraManager cameraManager;
     private float frameDelta = 0;
-    private AmmoAnimationMulti bp; // Variable used to set up the animation change
+    private AmmoAnimationMulti ammoanim; // Variable used to set up the animation change for ammo
+    private JacketAnimationMulti jacketanim; // Variable used to set up the animation change for jacket
+    private BottleAnimationMulti bottleanim; // Variable used to set up the animtion change for bottle
     private float animationTime; // Variable used to set up the frame timing
     Music GameSnd = Gdx.audio.newMusic(Gdx.files.internal("sfx/Game.ogg")); // Intialize the following music
 
@@ -66,13 +72,13 @@ public class GameScreen extends ScreenAdapter {
         orthogonalTiledMapRenderer = new OrthogonalTiledMapRenderer(this.tiledMap,UNITSCALE);
         orthogonalTiledMapRenderer.setView(game.camera);
         if(!WorldManager.isInitialised()){WorldManager.initialise(game,tiledMap);}
-        //player
-        smif = new PlayerCharacter(PLAYER_ATLAS_PATH,SMALL,START_POSITION);
+        ammoanim = new AmmoAnimationMulti("gfx/ammo_collision/idle/idle_assets.atlas", "gfx/ammo_collision/animation/anim_assets.atlas", MEDIUM, AMMO_START_POS, Animation.PlayMode.LOOP); // Initializes the animation change. Passes in both animation atlases, the texture to size it, sets the vector position and the animation playmode
+        jacketanim = new JacketAnimationMulti("gfx/armour_collision/idle/jacket_assets.atlas", "gfx/armour_collision/animation/collision_assets.atlas", MEDIUM, ARMOUR_START_POS, Animation.PlayMode.LOOP); // Initializes the animation change. Passes in both animation atlases, the texture to size it, sets the vector position and the animation playmode
+        bottleanim = new BottleAnimationMulti("gfx/bottle_collision/idle/bottle_assets.atlas", "gfx/bottle_collision/animation/smash_assets.atlas", TINY, HEALTH_START_POS, Animation.PlayMode.LOOP); // Initializes the animation change. Passes in both animation atlases, the texture to size it, sets the vector position and the animation playmode
+        smif = new PlayerCharacter(PLAYER_ATLAS_PATH,SMALL,START_POSITION, ammoanim, jacketanim, bottleanim); // Sets up player (includes parameters for sprite collisions)
         cameraManager = new CameraManager(game.camera,tiledMap);
         cameraManager.setTarget(smif);
         gameHUD = new HUD(game.batch,smif,game);
-        bp = new AmmoAnimationMulti("gfx/ammo_collision/idle/idle_assets.atlas", "gfx/ammo_collision/animation/anim_assets.atlas", MEDIUM, AMMO_START_POS, Animation.PlayMode.LOOP); // Initializes the animation change. Passes in both animation atlases, the texture to size it, sets the vector position and the animation playmode
-        smif.collide();
     }
 
     @Override
@@ -84,7 +90,9 @@ public class GameScreen extends ScreenAdapter {
         gameHUD.update(delta);
         game.batch.setProjectionMatrix(game.camera.combined);
         clearScreen();
-        bp.update(animationTime); // Updates the animation every frame
+        ammoanim.update(animationTime); // Updates the animation every frame
+        jacketanim.update(animationTime); // Updates the animation every frame
+        bottleanim.update(animationTime); // Updates the animation every frame
         draw();
         WorldManager.getInstance().doPhysicsStep(delta);
     }
@@ -95,7 +103,9 @@ public class GameScreen extends ScreenAdapter {
         cameraManager.update();
         game.batch.begin();
         smif.draw(game.batch);
-        bp.draw(game.batch); // Draws the animation to the screen
+        ammoanim.draw(game.batch); // Draws the animation to the screen
+        jacketanim.draw(game.batch); // Draws the animation to the screen
+        bottleanim.draw(game.batch); // Draws the animation to the screen
         game.batch.end();
         gameHUD.stage.draw();
 //      WorldManager.getInstance().debugRender();
@@ -112,9 +122,5 @@ public class GameScreen extends ScreenAdapter {
         GameSnd.play();
         GameSnd.setVolume(0.5f);
         GameSnd.setLooping(true);
-    }
-
-    public AmmoAnimationMulti getBP(){
-        return bp;
     }
 }

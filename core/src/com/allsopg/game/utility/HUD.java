@@ -42,8 +42,8 @@ public class HUD implements Disposable {
     private boolean timeUp;
 
     //Scene2D Widgets
-    private Label countdownLabel, timeLabel, linkLabel;
-    private static Label scoreLabel;
+    private Label countdownLabel, timeLabel, healthLabel, armourLabel, ammoLabel;
+    private static Label healthnumLabel, armournumLabel, ammonumLabel;
 
     public HUD(SpriteBatch sb, PlayerCharacter playerCharacter, TBWGame tbwGame) {
         this.playerCharacter = playerCharacter;
@@ -69,26 +69,45 @@ public class HUD implements Disposable {
         stage.addActor(tableData);
         stage.addActor(tableControls);
         Gdx.input.setInputProcessor(stage);
+
     }
 
     private void createScoreAndTimer(){
         countdownLabel = new Label(String.format("%03d", worldTimer),
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
-        scoreLabel = new Label(String.format("%03d", score),
+        healthnumLabel = new Label(String.format("%03d", score),
                 new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-        timeLabel = new Label("TIME REMAINING",
+        armournumLabel =  new Label(String.format("%03d", 000),
+                new Label.LabelStyle(new BitmapFont(), Color.GOLD));
+        ammonumLabel =  new Label(String.format("%03d", 000),
+                new Label.LabelStyle(new BitmapFont(), Color.ORANGE));
+        timeLabel = new Label("TIME REMAINING:",
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
-        linkLabel = new Label("POINTS",
+        healthLabel = new Label("HEALTH:",
                 new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        armourLabel = new Label("ARMOUR:",
+                new Label.LabelStyle(new BitmapFont(), Color.GOLD));
+        ammoLabel = new Label("AMMO:",
+                new Label.LabelStyle(new BitmapFont(), Color.ORANGE));
+
         //labels added to table using padding and expandX
-        tableData.add(linkLabel).padBottom(5).padLeft(10);
-        tableData.add(scoreLabel).expandX().padBottom(5).padLeft(-700);
-        tableData.add(timeLabel).padBottom(5).padRight(-1300);
-        tableData.add(countdownLabel).expandX().padBottom(5).padRight(-800);
-        linkLabel.setFontScale(2);
-        scoreLabel.setFontScale(2);
+        tableData.add(healthLabel).padBottom(5).padLeft(10);
+        tableData.add(healthnumLabel).expandX().padBottom(5).padLeft(-350);
+        tableData.add(armourLabel).padBottom(5).padLeft(-400);
+        tableData.add(armournumLabel).expandX().padBottom(5).padLeft(-610);
+        tableData.add(ammoLabel).padBottom(5).padLeft(-700);
+        tableData.add(ammonumLabel).expandX().padBottom(5).padLeft(-950);
+        tableData.add(timeLabel).padBottom(5).padRight(-420);
+        tableData.add(countdownLabel).expandX().padBottom(5).padRight(-280);
+        healthLabel.setFontScale(2);
+        healthnumLabel.setFontScale(2);
+        armourLabel.setFontScale(2);
+        armournumLabel.setFontScale(2);
+        ammoLabel.setFontScale(2);
+        ammonumLabel.setFontScale(2);
         countdownLabel.setFontScale(2);
         timeLabel.setFontScale(2);
+
     }
 
     private void createNavButtons(){
@@ -179,7 +198,7 @@ public class HUD implements Disposable {
 
     public static void addScore(int value) {
         score += value;
-        scoreLabel.setText(String.format("%06d", score));
+        healthnumLabel.setText(String.format("%06d", score));
     }
 
     @Override
@@ -193,7 +212,7 @@ public class HUD implements Disposable {
 
 
     public static Label getScoreLabel() {
-        return scoreLabel;
+        return healthnumLabel;
     }
 
     public static Integer getScore() {

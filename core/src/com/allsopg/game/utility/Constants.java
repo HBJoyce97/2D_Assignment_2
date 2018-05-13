@@ -20,6 +20,8 @@ public class Constants {
     //Animation Speed
     public static final float FRAME_DURATION = 1.0f / 30.0f;
     public static final float AMMO_FRAME_DURATION = 1.0f / 2.0f;
+    public static final float JACKET_FRAME_DURATION = 1.0f / 10.0f;
+    public static final float BOTTLE_FRAME_DURATION = 1.0f / 15.0f;
     public static final float TIME_STEP=1/60f;
     public static final int LEVEL_TIME = 120;
 
@@ -53,9 +55,8 @@ public class Constants {
     //ammo start position
     public static final Vector2 AMMO_START_POS = new Vector2(7, 10);
     //armour start position
-    public static final Vector2 ARMOUR_START_POS = new Vector2(10, 10);
+    public static final Vector2 ARMOUR_START_POS = new Vector2(9, 10);
     //health start position
-    public static final Vector2 HEALTH_START_POS = new Vector2(15, 10);
-
+    public static final Vector2 HEALTH_START_POS = new Vector2(11, 10);
 
 }
