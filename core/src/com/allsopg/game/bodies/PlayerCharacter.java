@@ -4,6 +4,7 @@ import com.allsopg.game.physics.WorldManager;
 import com.allsopg.game.screens.GameScreen;
 import com.allsopg.game.utility.Constants;
 import com.allsopg.game.utility.CurrentDirection;
+import com.allsopg.game.utility.GameData;
 import com.allsopg.game.utility.HUD;
 import com.allsopg.game.utility.IWorldObject;
 import com.badlogic.gdx.Game;
@@ -16,7 +17,6 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Timer;
 
-import java.util.TimerTask;
 
 import static com.allsopg.game.utility.Constants.AMMO_FRAME_DURATION;
 import static com.allsopg.game.utility.Constants.AMMO_START_POS;
@@ -47,7 +47,10 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
     private AmmoAnimationMulti ammoref; // Reference to AmmoAnimationMulti for collision detection
     private JacketAnimationMulti jacketref; // Reference to JacketAnimationMulti for collision detection
     private BottleAnimationMulti bottleref; // Reference to BottleAnimationMulti for collision detection
-    private HUD hud;
+    private HUD hud;                        // Reference to on-screen scores
+    private boolean ammoDestroyed = false;  // Flag to check if ammo sprite has been collided with
+    private boolean jacketDestroyed = false;  // Flag to check if jacket sprite has been collided with
+    private boolean bottleDestroyed = false;  // Flag to check if bottle sprite has been collided with
 
     // Constructor includes parameters from GameScreen
     public PlayerCharacter(String atlas, Texture t, Vector2 pos, AmmoAnimationMulti ammoanim, JacketAnimationMulti jacketanim, BottleAnimationMulti bottleanim) {
@@ -130,15 +133,23 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
             @Override
             public void run() {
                 ammoCollide();
+                cancel();
             }
-        }, 5, SPAWNER_SCAN_TICK);
+        }, 1, SPAWNER_SCAN_TICK, 1);
     }
 
     // Ammo collision
     public void ammoCollide() {
-            if ((playerBody.getPosition().x-PLAYER_OFFSET_X >= (1.0f * AMMO_START_POS.x))) {
-                ammoref.destroyRoutine();
-            }
+        if (((1.0f * AMMO_START_POS.x > playerBody.getPosition().x-PLAYER_OFFSET_X -2.25) && (1.0f * AMMO_START_POS.x < playerBody.getPosition().x-PLAYER_OFFSET_X +2.25)) &&
+                (1.0f * AMMO_START_POS.y) < (playerBody.getPosition().y-PLAYER_OFFSET_Y) && ((1.0f * AMMO_START_POS.y > playerBody.getPosition().y-PLAYER_OFFSET_Y -1.25))) {
+            ammoref.destroyRoutine();
+            hud.addAmmo(30);
+            hud.addScore(15);
+            ammoDestroyed = true;
+        }
+       else if(ammoDestroyed == false) {
+        ammotickMethod();
+    }
     }
 
     // Used to continuously check if player has collided with jacket sprite
@@ -147,15 +158,23 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
             @Override
             public void run() {
                 jacketCollide();
+                cancel();
             }
-        }, 5, SPAWNER_SCAN_TICK);
+        }, 1, SPAWNER_SCAN_TICK, 1);
     }
 
     // Jacket collision
     public void jacketCollide() {
-        if ((playerBody.getPosition().x-PLAYER_OFFSET_X >= (1.0f * ARMOUR_START_POS.x))) {
+       if (((1.0f * ARMOUR_START_POS.x > playerBody.getPosition().x-PLAYER_OFFSET_X -1.20) && (1.0f * ARMOUR_START_POS.x < playerBody.getPosition().x-PLAYER_OFFSET_X +1.20)) &&
+               (1.0f * ARMOUR_START_POS.y) < (playerBody.getPosition().y-PLAYER_OFFSET_Y +1.95) && ((1.0f * ARMOUR_START_POS.y > playerBody.getPosition().y-PLAYER_OFFSET_Y -1.5))){
             jacketref.destroyRoutine();
-        }
+            hud.addArmour(100);
+            hud.addScore(10);
+            jacketDestroyed = true;
+          }
+       else if(jacketDestroyed == false) {
+           jackettickMethod();
+       }
     }
 
     // Used to continuously check if player has collided with bottle sprite
@@ -164,19 +183,26 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
             @Override
             public void run() {
                 bottleCollide();
+                cancel();
             }
-        }, 5, SPAWNER_SCAN_TICK);
+        }, 1, SPAWNER_SCAN_TICK, 1);
     }
 
     // Bottle collision
     public void bottleCollide() {
-        if ((playerBody.getPosition().x-PLAYER_OFFSET_X >= (1.0f * HEALTH_START_POS.x))) {
-            bottleref.destroyRoutine();
+        if (((1.0f * HEALTH_START_POS.x > playerBody.getPosition().x-PLAYER_OFFSET_X -1.20) && (1.0f * HEALTH_START_POS.x < playerBody.getPosition().x-PLAYER_OFFSET_X +1.20)) &&
+                    (1.0f * HEALTH_START_POS.y) < (playerBody.getPosition().y-PLAYER_OFFSET_Y) && ((1.0f * HEALTH_START_POS.y > playerBody.getPosition().y-PLAYER_OFFSET_Y -1.0))){
+                bottleref.destroyRoutine();
+                hud.addHealth(50);
+                hud.addScore(5);
+                bottleDestroyed = true;
+            }
+        else if(bottleDestroyed == false) {
+            bottletickMethod();
         }
     }
 
     @Override
     public void reaction() {
-
     }
 }

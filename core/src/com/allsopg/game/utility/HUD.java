@@ -40,11 +40,11 @@ public class HUD implements Disposable {
     private float timeCount;
     private static Integer score;
     private boolean timeUp;
-    private int health, armour, ammo;
+    private static int health, armour, ammo;
 
     //Scene2D Widgets
-    private Label countdownLabel, timeLabel, healthLabel, armourLabel, ammoLabel;
-    private static Label healthnumLabel, armournumLabel, ammonumLabel;
+    private Label countdownLabel, timeLabel, healthLabel, armourLabel, ammoLabel, scoreLabel;
+    private static Label healthnumLabel, armournumLabel, ammonumLabel, scorenumlabel;
 
     public HUD(SpriteBatch sb, PlayerCharacter playerCharacter, TBWGame tbwGame) {
         this.playerCharacter = playerCharacter;
@@ -85,6 +85,8 @@ public class HUD implements Disposable {
                 new Label.LabelStyle(new BitmapFont(), Color.GOLD));
         ammonumLabel =  new Label(String.format("%03d", ammo),
                 new Label.LabelStyle(new BitmapFont(), Color.ORANGE));
+        scorenumlabel = new Label(String.format("%03d", score),
+                new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         timeLabel = new Label("TIME REMAINING:",
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
         healthLabel = new Label("HEALTH:",
@@ -93,16 +95,20 @@ public class HUD implements Disposable {
                 new Label.LabelStyle(new BitmapFont(), Color.GOLD));
         ammoLabel = new Label("AMMO:",
                 new Label.LabelStyle(new BitmapFont(), Color.ORANGE));
+        scoreLabel = new Label("SCORE:",
+                new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
         //labels added to table using padding and expandX
         tableData.add(healthLabel).padBottom(5).padLeft(10);
-        tableData.add(healthnumLabel).expandX().padBottom(5).padLeft(-350);
-        tableData.add(armourLabel).padBottom(5).padLeft(-400);
-        tableData.add(armournumLabel).expandX().padBottom(5).padLeft(-610);
-        tableData.add(ammoLabel).padBottom(5).padLeft(-700);
-        tableData.add(ammonumLabel).expandX().padBottom(5).padLeft(-950);
-        tableData.add(timeLabel).padBottom(5).padRight(-420);
-        tableData.add(countdownLabel).expandX().padBottom(5).padRight(-280);
+        tableData.add(healthnumLabel).expandX().padBottom(5).padLeft(-280);
+        tableData.add(armourLabel).padBottom(5).padLeft(-300);
+        tableData.add(armournumLabel).expandX().padBottom(5).padLeft(-440);
+        tableData.add(ammoLabel).padBottom(5).padLeft(-500);
+        tableData.add(ammonumLabel).expandX().padBottom(5).padLeft(-680);
+        tableData.add(scoreLabel).padBottom(5).padLeft(-750);
+        tableData.add(scorenumlabel).expandX().padBottom(5).padLeft(-900);
+        tableData.add(timeLabel).padBottom(5).padRight(-240);
+        tableData.add(countdownLabel).expandX().padBottom(5).padRight(-180);
         healthLabel.setFontScale(2);
         healthnumLabel.setFontScale(2);
         armourLabel.setFontScale(2);
@@ -111,14 +117,16 @@ public class HUD implements Disposable {
         ammonumLabel.setFontScale(2);
         countdownLabel.setFontScale(2);
         timeLabel.setFontScale(2);
+        scoreLabel.setFontScale(2);
+        scorenumlabel.setFontScale(2);
 
     }
 
     private void createNavButtons(){
         Texture actorUpBtn =
                 new Texture(Gdx.files.internal("buttons/up.png"));
-        Texture actorDownBtn =
-                new Texture(Gdx.files.internal("buttons/down.png"));
+//        Texture actorDownBtn =
+//                new Texture(Gdx.files.internal("buttons/down.png"));
         Texture actorLeftBtn =
                 new Texture(Gdx.files.internal("buttons/left.png"));
         Texture actorRightBtn =
@@ -129,10 +137,10 @@ public class HUD implements Disposable {
                 new TextureRegionDrawable(new TextureRegion(actorUpBtn));
         upBtn = new Button( buttonStyleUp );
 
-        Button.ButtonStyle buttonStyleDown = new Button.ButtonStyle();
-        buttonStyleDown.up =
-                new TextureRegionDrawable(new TextureRegion(actorDownBtn));
-        downBtn = new Button( buttonStyleDown );
+//        Button.ButtonStyle buttonStyleDown = new Button.ButtonStyle();
+//        buttonStyleDown.up =
+//                new TextureRegionDrawable(new TextureRegion(actorDownBtn));
+//        downBtn = new Button( buttonStyleDown );
 
         Button.ButtonStyle buttonStyleLeft = new Button.ButtonStyle();
         buttonStyleLeft.up =
@@ -161,13 +169,13 @@ public class HUD implements Disposable {
                 playerCharacter.move(CurrentDirection.UP);
             }
         });
-        //down
-        downBtn.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-
-            }
-        });
+//        //down
+//        downBtn.addListener(new ChangeListener() {
+//            @Override
+//            public void changed(ChangeEvent event, Actor actor) {
+//
+//            }
+//        });
         //left
         leftBtn.addListener(new ChangeListener() {
             @Override
@@ -200,9 +208,28 @@ public class HUD implements Disposable {
         }
     }
 
+    // Used to add health to the player. Called in PlayerCharacter
+    public static void addHealth(int value) {
+        health += value;
+        healthnumLabel.setText(String.format("%03d", health));
+    }
+
+    // Used to add armour to the player. Called in PlayerCharacter
+    public static void addArmour(int value) {
+        armour += value;
+        armournumLabel.setText(String.format("%03d", armour));
+    }
+
+    // Used to add ammo to the player. Called in PlayerCharacter
+    public static void addAmmo(int value) {
+        ammo += value;
+        ammonumLabel.setText(String.format("%03d", ammo));
+    }
+
+    // Used to increase the score. Called in PlayerCharacter
     public static void addScore(int value) {
-        score += value;
-        healthnumLabel.setText(String.format("%06d", score));
+        score = score + value;
+        scorenumlabel.setText(String.format("%03d", score));
     }
 
     @Override

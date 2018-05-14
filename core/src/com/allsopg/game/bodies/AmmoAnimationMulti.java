@@ -86,7 +86,7 @@ public class AmmoAnimationMulti extends Sprite {
     // The following code is the main animation for the sprite on screen
     public void destroyRoutine(){
             Tween.to(tweenData, TweenDataAccessor.TYPE_POS,0f) // Sets the start position of the sprite (off screen in the center)
-                    .target(7, 10)
+                    .target(21, 1)
                     .setCallback(new TweenCallback() { // Initializes the callback
                         @Override
                         public void onEvent(int type, BaseTween<?> source) { // The following event causes the animation change

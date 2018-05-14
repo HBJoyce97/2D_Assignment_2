@@ -18,12 +18,12 @@ public class Constants {
     public static final float TILE_SIZE   = 32;
     public static final float UNITSCALE = 1.0f / TILE_SIZE;
     //Animation Speed
-    public static final float FRAME_DURATION = 1.0f / 30.0f;
-    public static final float AMMO_FRAME_DURATION = 1.0f / 2.0f;
-    public static final float JACKET_FRAME_DURATION = 1.0f / 10.0f;
-    public static final float BOTTLE_FRAME_DURATION = 1.0f / 15.0f;
+    public static final float FRAME_DURATION = 1.0f / 15.0f;
+    public static final float AMMO_FRAME_DURATION = 1.0f / 3.0f;
+    public static final float JACKET_FRAME_DURATION = 1.0f / 2f;
+    public static final float BOTTLE_FRAME_DURATION = 1.0f / 5f;
     public static final float TIME_STEP=1/60f;
-    public static final int LEVEL_TIME = 120;
+    public static final int LEVEL_TIME = 180;
 
     public static final int VELOCITY_ITERATIONS = 6;
     public static final int POSITION_ITERATIONS = 2;
@@ -53,10 +53,10 @@ public class Constants {
     //player start position
     public static final Vector2 START_POSITION = new Vector2(1,10);
     //ammo start position
-    public static final Vector2 AMMO_START_POS = new Vector2(7, 10);
+    public static final Vector2 AMMO_START_POS = new Vector2(21, 1);
     //armour start position
-    public static final Vector2 ARMOUR_START_POS = new Vector2(9, 10);
+    public static final Vector2 ARMOUR_START_POS = new Vector2(34, 8);
     //health start position
-    public static final Vector2 HEALTH_START_POS = new Vector2(11, 10);
+    public static final Vector2 HEALTH_START_POS = new Vector2(73, 4);
 
 }

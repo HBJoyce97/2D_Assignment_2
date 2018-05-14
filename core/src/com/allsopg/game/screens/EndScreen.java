@@ -2,6 +2,7 @@ package com.allsopg.game.screens;
 
 import com.allsopg.game.utility.Constants;
 import com.allsopg.game.utility.GameData;
+import com.allsopg.game.utility.HUD;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
@@ -48,14 +49,14 @@ public class EndScreen extends ScreenAdapter {
     private void createScoreAndTimer(){
         //define labels using the String, and a Label style consisting of a font and color
         headerLabel = new Label("GAME OVER", new Label.LabelStyle(new BitmapFont(), Color.RED));
-       // scoreLabel = new Label(String.format("%03d", GameData.getInstance().getScore()), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
-       // linkLabel = new Label("POINTS", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
-        //add labels to table
-        tableData.add(headerLabel);
+        scoreLabel = new Label(String.format("%03d", HUD.getScore()), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+        linkLabel = new Label("POINTS", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+       //add labels to table
+        tableData.add(headerLabel).padLeft(230);
         tableData.row();
         headerLabel.setFontScale(2);
-       // tableData.add(linkLabel).padLeft(60);
-       // tableData.add(scoreLabel).expandX().padRight(160);
+        tableData.add(linkLabel).padLeft(140);
+        tableData.add(scoreLabel).expandX().padRight(330);
 
     }
 
