@@ -31,6 +31,7 @@ import static com.allsopg.game.utility.Constants.MAX_VELOCITY;
 import static com.allsopg.game.utility.Constants.MEDIUM;
 import static com.allsopg.game.utility.Constants.PLAYER_OFFSET_X;
 import static com.allsopg.game.utility.Constants.PLAYER_OFFSET_Y;
+import static com.allsopg.game.utility.Constants.PLAYER_SECOND_ATLAS_PATH;
 import static com.allsopg.game.utility.Constants.RESTITUTION;
 import static com.allsopg.game.utility.Constants.START_POSITION;
 import static com.sun.jmx.mbeanserver.Util.cast;
@@ -127,6 +128,12 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
         return fixtureDef;
     }
 
+    // Used to change the atlas of the player (used in jacket collision)
+    public  void setAtlas(String s)
+    {
+        initAtlas(s);
+    }
+
     // Used to continuously check if player has collided with ammo sprite
     public void ammotickMethod() {
         Timer.schedule(new Timer.Task() {
@@ -166,8 +173,9 @@ public class PlayerCharacter extends AnimatedSprite implements IWorldObject {
     // Jacket collision
     public void jacketCollide() {
        if (((1.0f * ARMOUR_START_POS.x > playerBody.getPosition().x-PLAYER_OFFSET_X -1.20) && (1.0f * ARMOUR_START_POS.x < playerBody.getPosition().x-PLAYER_OFFSET_X +1.20)) &&
-               (1.0f * ARMOUR_START_POS.y) < (playerBody.getPosition().y-PLAYER_OFFSET_Y +1.95) && ((1.0f * ARMOUR_START_POS.y > playerBody.getPosition().y-PLAYER_OFFSET_Y -1.5))){
+               (1.0f * ARMOUR_START_POS.y) < (playerBody.getPosition().y-PLAYER_OFFSET_Y +1.95) && ((1.0f * ARMOUR_START_POS.y > playerBody.getPosition().y-PLAYER_OFFSET_Y -1.3))){
             jacketref.destroyRoutine();
+            setAtlas(PLAYER_SECOND_ATLAS_PATH);
             hud.addArmour(100);
             hud.addScore(10);
             jacketDestroyed = true;

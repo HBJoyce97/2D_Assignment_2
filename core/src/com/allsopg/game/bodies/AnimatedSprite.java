@@ -37,7 +37,7 @@ public abstract class AnimatedSprite extends Sprite {
         this.setRegion((TextureRegion) animation.getKeyFrame(animationTime));
     }
 
-    private void initAtlas(String atlasString){
+    public void initAtlas(String atlasString){
         atlas = new TextureAtlas(Gdx.files.internal(atlasString));
         //load animations
         Array<TextureAtlas.AtlasRegion> regions = new

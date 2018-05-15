@@ -47,6 +47,7 @@ public class Constants {
     public static float PLAYER_OFFSET_X=1.00f;
     //player graphics
     public static final String PLAYER_ATLAS_PATH = "gfx/character/normal/character_norm_assets.atlas";
+    public static final String PLAYER_SECOND_ATLAS_PATH = "gfx/character/buff/character_buff_assets.atlas";
     public static final Texture MEDIUM = new Texture(Gdx.files.internal("gfx/mediumSize.png"));
     public static final Texture SMALL = new Texture(Gdx.files.internal("gfx/smallSize.png"));
     public static final Texture TINY = new Texture(Gdx.files.internal("gfx/tinySize.png"));

@@ -18,15 +18,19 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+
+import java.util.Set;
 
 import static com.allsopg.game.utility.Constants.AMMO_START_POS;
 import static com.allsopg.game.utility.Constants.ARMOUR_START_POS;
 import static com.allsopg.game.utility.Constants.HEALTH_START_POS;
 import static com.allsopg.game.utility.Constants.MEDIUM;
 import static com.allsopg.game.utility.Constants.PLAYER_ATLAS_PATH;
+import static com.allsopg.game.utility.Constants.PLAYER_SECOND_ATLAS_PATH;
 import static com.allsopg.game.utility.Constants.SMALL;
 import static com.allsopg.game.utility.Constants.START_POSITION;
 import static com.allsopg.game.utility.Constants.TINY;
