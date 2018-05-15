@@ -53,7 +53,7 @@ public class HUD implements Disposable {
         worldTimer = Constants.LEVEL_TIME;
         timeCount = 0;
         score = 0;
-        health = 50; // Variable for health value
+        health = 100; // Variable for health value
         armour = 0; // Variable for armour value
         ammo = 0; // Variable for ammo value
         //new camera used to setup the HUD viewport seperate from the main Game Camera
@@ -153,10 +153,10 @@ public class HUD implements Disposable {
         rightBtn = new Button( buttonStyleRight );
 
         //add buttons
-        tableControls.add(upBtn).padLeft(50);
+        tableControls.add(upBtn).padLeft(50).padTop(80);
         tableControls.add(downBtn).expandX();
         tableControls.add(leftBtn).expandX().padLeft(150);
-        tableControls.add(rightBtn).expandX().padRight(25);
+        tableControls.add(rightBtn).expandX().padRight(25).padTop(10);
         //add listeners to the buttons
         addButtonListeners();
     }
@@ -210,7 +210,7 @@ public class HUD implements Disposable {
 
     // Used to add health to the player. Called in PlayerCharacter
     public static void addHealth(int value) {
-        health += value;
+        health -= value;
         healthnumLabel.setText(String.format("%03d", health));
     }
 

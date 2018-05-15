@@ -23,7 +23,7 @@ public class Constants {
     public static final float JACKET_FRAME_DURATION = 1.0f / 2f;
     public static final float BOTTLE_FRAME_DURATION = 1.0f / 5f;
     public static final float TIME_STEP=1/60f;
-    public static final int LEVEL_TIME = 180;
+    public static final int LEVEL_TIME = 120;
 
     public static final int VELOCITY_ITERATIONS = 6;
     public static final int POSITION_ITERATIONS = 2;
